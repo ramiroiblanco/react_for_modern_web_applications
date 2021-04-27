@@ -5,7 +5,7 @@ export const PeopleList = ({people}) => {
   return (
     <>
       {people.map(person => (
-        <PeopleListItem person={person} />
+        <PeopleListItem person={person} key={person.name}/>
       ))}
     </>
   )
