@@ -1,13 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-import {Greeting} from './Greeting'
+import './App.css'
+import { Greeting } from './Greeting'
+import { PeopleList } from './PeopleList'
+import React from 'react'
 
-function App() {
+const people = [{
+  name: 'John',
+  age: 40,
+  hairColor: 'brown'
+  },
+  {
+    name: 'Helga',
+    age: 25,
+    hairColor: 'red'
+  },
+  {
+    name: 'Dwayne',
+    age: 55,
+    hairColor: 'blonde'
+  }]
+
+function App () {
   return (
     <div className="App">
       <header className="App-header">
-        <Greeting />
-        <img src={logo} className="App-logo" alt="logo" />
+        <Greeting name="Milchanchis" numberOfMessages={10}/>
+        <PeopleList people = {people}/>
         <p>
           This is so cool.
         </p>
@@ -21,7 +38,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
