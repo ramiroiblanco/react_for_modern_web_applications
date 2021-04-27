@@ -23,7 +23,6 @@ function App () {
   return (
     <div className="App">
       <header className="App-header">
-        <p style={{color: 'red', fontSize: '96px'}}>Big Red Text!</p>
         <Greeting name="Milchanchis" numberOfMessages={10}/>
         <PeopleList people = {people}/>
         <p>
