@@ -1,14 +1,11 @@
 import React from 'react'
+import { PeopleListItem } from './PeopleListItem'
 
 export const PeopleList = ({people}) => {
   return (
     <>
       {people.map(person => (
-        <div>
-          <h3>{person.name}</h3>
-          <p>Age: {person.age}</p>
-          <p>Hair color: {person.hairColor}</p>
-        </div>
+        <PeopleListItem person={person} />
       ))}
     </>
   )
