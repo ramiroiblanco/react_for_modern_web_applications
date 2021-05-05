@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { useLocation } from "react-router-dom"
-import {parse} from "query-string"
+import { useLocation } from 'react-router-dom'
+import { parse } from 'query-string'
 import { CongratulationsMessage } from '../CongratulationsMessage'
 import { CounterButton } from '../CounterButton'
+import { DisplayIf } from '../DisplayIf'
 
 export const CounterButtonPage = () => {
   const location = useLocation()
-  const startingValue = parse(location.search).startingValue
+  const startingValue = parse(location.search).startingValue || 0
   const [numberOfClicks, setNumberOfClicks] = useState(Number(startingValue))
   const [hideMessage, setHideMessage] = useState(false)
 
@@ -15,12 +16,10 @@ export const CounterButtonPage = () => {
   return (
     <>
       <h1>Counter Button Page</h1>
-      {hideMessage
-        ? null
-        : <CongratulationsMessage numberOfClicks={numberOfClicks}
-                                  threshold={10}
-                                  onHide={() => setHideMessage(true)}/>}
-
+      <DisplayIf condition={!hideMessage && numberOfClicks >= 10}>
+        <CongratulationsMessage threshold={10}
+                                onHide={() => setHideMessage(true)}/>
+      </DisplayIf>
       <CounterButton onIncrement={increment} numberOfClicks={numberOfClicks}/>
     </>
   )
